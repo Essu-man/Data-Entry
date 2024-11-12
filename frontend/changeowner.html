@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Ownership - DVLA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .logo {
+            width: 130px;
+            height: 75px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        .success-popup {
+            display: none;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            animation: popupAnimation 0.5s ease-out;
+        }
+
+        @keyframes popupAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen flex items-center justify-center">
+    <div class="flex min-h-screen w-full">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gradient-to-b from-green-700 to-teal-600 p-6 text-white shadow-lg flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-8">
+                    <a href="dashboard.html">
+                        <img src="./images/oop.png" alt="DVLA Logo" class="logo cursor-pointer">
+                    </a>
+                    <div class="ml-3">
+                        <h2 class="text-2xl font-bold">DVLA</h2>
+                        <p class="text-sm opacity-75">Vehicle Inspection and Registration</p>
+                    </div>
+                </div>
+                <a href="records.html" class="flex items-center p-3 mb-2 hover:bg-green-500 rounded-lg transition duration-200">
+                    <span class="material-icons mr-3">search</span>
+                    Search Records
+                </a>
+                <a href="changeowner.html" class="flex items-center p-3 mb-2 bg-green-600 rounded-lg hover:bg-green-500 transition duration-200">
+                    <span class="material-icons mr-3">sync_alt</span>
+                    Change Ownership
+                </a>
+                <a href="admin.html" class="flex items-center p-3 mb-2 hover:bg-green-500 rounded-lg transition duration-200">
+                    <span class="material-icons mr-3">admin_panel_settings</span>
+                    Admin
+                </a>
+                <a href="admin.html" class="flex items-center p-3 hover:bg-green-500 rounded-lg transition duration-200">
+                    <span class="material-icons mr-3">logout</span>
+                    Logout
+                </a>
+            </div>
+
+            <div class="mt-auto flex flex-col items-center">
+                <button class="flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-5 py-3 rounded-lg shadow-lg hover:from-green-500 hover:to-teal-500 transform hover:scale-105 transition duration-200 ease-in-out mb-4">
+                    <span class="material-icons mr-2">logout</span>
+                    <span class="font-semibold">Logout</span>
+                </button>
+                <div class="text-center opacity-75 text-sm">
+                    © 2024 DVLA Club
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 relative">
+            <a href="dashboard.html" class="absolute top-4 left-4 text-green-500 text-2xl hover:text-green-700 transition">←</a>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mt-12">
+                <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Change of Ownership</h1>
+
+                <!-- Progress Steps -->
+                <div class="flex items-center mb-6">
+                    <div class="flex items-center flex-1">
+                        <div id="step1" class="flex items-center">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-500 text-white font-bold">1</div>
+                            <span class="ml-2 font-medium text-green-500">Current Owner Information</span>
+                        </div>
+                        <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                    </div>
+                    <div class="flex items-center flex-1">
+                        <div id="step2" class="flex items-center">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-500 text-white font-bold">2</div>
+                            <span class="ml-2 font-medium text-green-500">Previous Owner Information</span>
+                        </div>
+                        <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <div id="step3" class="flex items-center">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-500 text-white font-bold">3</div>
+                            <span class="ml-2 font-medium text-green-500">Vehicle Information</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Sections -->
+                <div id="section1" class="form-section hidden space-y-4">
+                    <!-- Current Owner -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">FullName</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="fullname">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Postal Address</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="postaladdress">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Residential Address</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="residentialaddress">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Contact</label>
+                            <input type="number" class="w-full p-2 border rounded-lg" id="contact">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" class="w-full p-2 border rounded-lg" id="email">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">TIN</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="tin">
+                        </div>
+                    </div>
+                </div>
+                <div id="section2" class="form-section hidden space-y-4">
+                    <!-- Current Owner -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">FullName</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="fullname">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Postal Address</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="postaladdress">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Residential Address</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="residentialaddress">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Contact</label>
+                            <input type="number" class="w-full p-2 border rounded-lg" id="contact">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" class="w-full p-2 border rounded-lg" id="email">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">TIN</label>
+                            <input type="text" class="w-full p-2 border rounded-lg" id="tin">
+                        </div>
+                    </div>
+                </div>
+                <div id="section3" class="form-section hidden space-y-4">
+                    <!-- Vehicle Information -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Transfer Date</label>
+                            <input type="date" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Remarks</label>
+                            <input type="text" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Vehicle Make</label>
+                            <input type="text" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Chassis Number</label>
+                            <input type="text" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Body Type</label>
+                            <input type="text" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Vehicle Use</label>
+                            <select class="w-full p-2 border rounded-lg">
+                                <option>Commercial</option>
+                                <option>Private</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Fuel Type</label>
+                            <select class="w-full p-2 border rounded-lg">
+                                <option>Petrol</option>
+                                <option>Diesel</option>
+                                <option>Electric</option>
+                                <option>Hybrid</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Year of Manufacture</label>
+                            <input type="date" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Cubic Capacity</label>
+                            <input type="number" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Engine No.</label>
+                            <input type="text" class="w-full p-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">No. of Cylinders</label>
+                            <input type="text" class="w-full p-2 border rounded-lg">
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <!-- Success Popup -->
+                <div id="successPopup" class="success-popup">
+                    Submitted successfully!
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex justify-between mt-6">
+                    <button onclick="navigatePrevious()" class="px-6 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition">Previous</button>
+                    <button onclick="navigateNext()" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">Next</button>
+                    <button onclick="saveFormData()" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSection = 0;
+        const sections = document.querySelectorAll('.form-section');
+        const steps = document.querySelectorAll('.flex.items-center.flex-1 .w-10, #step3 .w-10');
+        const successPopup = document.getElementById('successPopup');
+
+        function showSection(index) {
+            sections.forEach((section, i) => {
+                section.classList.toggle('hidden', i !== index);
+                steps[i].classList.toggle('bg-green-500', i <= index);
+                steps[i].classList.toggle('text-white', i <= index);
+                steps[i].classList.toggle('bg-gray-300', i > index);
+                steps[i].classList.toggle('text-gray-500', i > index);
+            });
+        }
+
+        function navigateNext() {
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                showSection(currentSection);
+            }
+        }
+
+        function navigatePrevious() {
+            if (currentSection > 0) {
+                currentSection--;
+                showSection(currentSection);
+            }
+        }
+
+        function saveFormData() {
+            successPopup.style.display = 'block';
+            setTimeout(() => {
+                successPopup.style.display = 'none';
+                clearForm();
+            }, 3000);
+        }
+
+        function clearForm() {
+            const formElements = document.querySelectorAll('input');
+            formElements.forEach((element) => {
+                element.value = '';
+            });
+        }
+
+        showSection(currentSection); // Initialize the form
+    </script>
+</body>
+</html>

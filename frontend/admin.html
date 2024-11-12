@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+   
+    .logo {
+        width: 80px; /* Increased width */
+        height: 80px; /* Adjusted height to maintain aspect ratio */
+        border-radius: 50%; /* Circular logo */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        transition: transform 0.3s; /* Smooth scaling on hover */
+    }
+    .logo:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+    }
+</style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen flex items-center justify-center">
+  
+  <div class="flex min-h-screen w-full">
+      <!-- Sidebar -->
+      <div class="w-64 bg-gradient-to-b from-green-700 to-teal-600 p-6 text-white shadow-lg flex flex-col justify-between">
+          <div>
+              <div class="flex items-center mb-8">
+                <a href="dashboard.html">
+                    <img src="./images/oop.png" alt="DVLA Logo" class="logo cursor-pointer">
+                </a>
+                  <div class="ml-3">
+                      <h2 class="text-2xl font-bold">DVLA</h2>
+                      <p class="text-sm opacity-75">Admin Panel</p>
+                  </div>
+              </div>
+              <nav>
+                  <a href="dashboard.html" class="flex items-center p-3 mb-2 bg-green-600 rounded-lg hover:bg-green-500 transition duration-200">
+                      <span class="material-icons mr-3">dashboard</span>
+                      <span>Dashboard</span>
+                  </a>
+                  <a href="records.html" class="flex items-center p-3 mb-2 hover:bg-green-500 rounded-lg transition duration-200">
+                      <span class="material-icons mr-3">search</span>
+                      <span>Search Records</span>
+                  </a>
+                  <a href="changeowner.html" class="flex items-center p-3 mb-2 hover:bg-green-500 rounded-lg transition duration-200">
+                      <span class="material-icons mr-3">sync_alt</span>
+                      <span>Change Ownership</span>
+                  </a>
+                  <a href="logout.html" class="flex items-center p-3 hover:bg-green-500 rounded-lg transition duration-200">
+                      <span class="material-icons mr-3">logout</span>
+                      <span>Logout</span>
+                  </a>
+              </nav>
+          </div>
+          <div class="mt-auto flex flex-col items-center">
+            <button class="flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-5 py-3 rounded-lg shadow-lg hover:from-green-500 hover:to-teal-500 transform hover:scale-105 transition duration-200 ease-in-out mb-4">
+                <span class="material-icons mr-2">logout</span>
+                <span class="font-semibold">Logout</span>
+            </button>
+            <div class="text-center opacity-75 text-sm">
+                © 2024 DVLA Club
+            </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 p-8">
+          <!-- Recent Activity Logs Section -->
+          <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+              <h2 class="text-2xl font-bold text-gray-800 mb-4">Recent Activity Logs</h2>
+              <div class="overflow-x-auto">
+                  <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                      <thead>
+                          <tr class="bg-gray-100 text-left text-gray-600">
+                              <th class="py-4 px-6">ID</th>
+                              <th class="py-4 px-6">Action</th>
+                              <th class="py-4 px-6">User</th>
+                              <th class="py-4 px-6">Timestamp</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr class="border-b hover:bg-gray-50 transition duration-200">
+                              <td class="py-4 px-6">1</td>
+                              <td class="py-4 px-6">Login</td>
+                              <td class="py-4 px-6">Admin</td>
+                              <td class="py-4 px-6">2024-10-31 10:30 AM</td>
+                          </tr>
+                          <tr class="border-b hover:bg-gray-50 transition duration-200">
+                              <td class="py-4 px-6">2</td>
+                              <td class="py-4 px-6">Edited User Role</td>
+                              <td class="py-4 px-6">Lettie Jimenez</td>
+                              <td class="py-4 px-6">2024-10-30 02:15 PM</td>
+                          </tr>
+                          <tr class="hover:bg-gray-50 transition duration-200">
+                              <td class="py-4 px-6">3</td>
+                              <td class="py-4 px-6">Deleted Record</td>
+                              <td class="py-4 px-6">Craig Perkins</td>
+                              <td class="py-4 px-6">2024-10-29 09:45 AM</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <!-- User Registration Section -->
+          <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+              <h2 class="text-2xl font-bold text-gray-800 mb-4">Register New Member</h2>
+              <form id="registerForm">
+                  <div class="mb-4">
+                      <label class="block text-gray-700 mb-2" for="name">Name</label>
+                      <input type="text" id="name" 
+                             class="border border-gray-300 rounded-lg p-2 w-full" 
+                             required 
+                             minlength="2" 
+                             pattern="[A-Za-z ]{2,50}"
+                             title="Name should only contain letters and spaces, 2-50 characters long">
+                  </div>
+                  <div class="mb-4">
+                      <label class="block text-gray-700 mb-2" for="email">Email</label>
+                      <input type="email" id="email" 
+                             class="border border-gray-300 rounded-lg p-2 w-full" 
+                             required>
+                  </div>
+                  <div class="mb-4">
+                      <label class="block text-gray-700 mb-2" for="password">Password</label>
+                      <input type="password" id="password" 
+                             class="border border-gray-300 rounded-lg p-2 w-full" 
+                             required 
+                             minlength="6"
+                             title="Password must be at least 6 characters long">
+                  </div>
+                  <div class="mb-4">
+                      <label class="block text-gray-700 mb-2" for="role">Role</label>
+                      <select id="role" class="border border-gray-300 rounded-lg p-2 w-full" required>
+                          <option value="" disabled selected>Select Role</option>
+                          <option value="admin">Admin</option>
+                          <option value="member">Member</option>
+                      </select>
+                  </div>
+                  <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-200">
+                      Register
+                  </button>
+              </form>
+          </div>
+
+          <!-- User Accounts Section -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+              <h2 class="text-2xl font-bold text-gray-800 mb-4">User Accounts</h2>
+              <div class="overflow-x-auto">
+                  <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                      <thead>
+                          <tr class="bg-gray-100 text-left text-gray-600">
+                              <th class="py-4 px-6">ID</th>
+                              <th class="py-4 px-6">Name</th>
+                              <th class="py-4 px-6">Email</th>
+                              <th class="py-4 px-6">Role</th>
+                              <th class="py-4 px-6">Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody id="userAccountsList">
+                          <!-- User accounts will be rendered here -->
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center mt-6 space-x-4">
+              <button class="text-gray-400 hover:text-gray-600">&lt;</button>
+              <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">1</button>
+              <button class="bg-gray-200 text-gray-600 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-200">2</button>
+              <button class="bg-gray-200 text-gray-600 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-200">3</button>
+              <button class="bg-gray-200 text-gray-600 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-200">4</button>
+              <button class="bg-gray-200 text-gray-600 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-200">5</button>
+              <button class="text-gray-400 hover:text-gray-600">&gt;</button>
+          </div>
+      </div>
+  </div>
+
+  <script>
+    // Function to fetch and display users
+    async function fetchUsers() {
+        try {
+            const response = await fetch('http://localhost/vir-data/backend/api/users.php');
+            const data = await response.json();
+            if (data.status === 'success') {
+                renderUserAccounts(data.users);
+            }
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    }
+
+    // Function to render user accounts
+    function renderUserAccounts(users) {
+        const tbody = document.getElementById('userAccountsList');
+        tbody.innerHTML = users.map(user => `
+            <tr class="border-b hover:bg-gray-50 transition duration-200">
+                <td class="py-4 px-6">${user.id}</td>
+                <td class="py-4 px-6">${user.name}</td>
+                <td class="py-4 px-6">${user.email}</td>
+                <td class="py-4 px-6">${user.role}</td>
+                <td class="py-4 px-6">
+                    <button class="text-red-500 hover:text-red-700" onclick="deleteUser(${user.id})">Delete</button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    // Function to register new user
+    async function registerUser(userData) {
+        try {
+            const response = await fetch('http://localhost/vir-data/backend/api/register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                alert('User registered successfully!');
+                fetchUsers(); // Refresh the user list
+                return true;
+            } else {
+                alert(data.message || 'Registration failed');
+                return false;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred during registration');
+            return false;
+        }
+    }
+
+    // Event listener for registration form
+    document.getElementById('registerForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const userData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            role: document.getElementById('role').value
+        };
+
+        const success = await registerUser(userData);
+        if (success) {
+            this.reset(); // Reset the form only if registration was successful
+        }
+    });
+
+    // Function to delete user
+    async function deleteUser(id) {
+        if (!confirm('Are you sure you want to delete this user?')) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost/dvla/backend/api/users.php?id=${id}`, {
+                method: 'DELETE'
+            });
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                alert('User deleted successfully!');
+                fetchUsers(); // Refresh the user list
+            } else {
+                alert(data.message || 'Delete failed');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while deleting the user');
+        }
+    }
+
+    // Initial fetch of users when page loads
+    fetchUsers();
+  </script>
+</body>
+</html>

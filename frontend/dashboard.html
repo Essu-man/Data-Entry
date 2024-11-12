@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVLA Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+
+        .logo {
+            width: 130px; /* Increased width */
+            height: 75px; /* Adjusted height to maintain aspect ratio */
+            border-radius: 50%; /* Circular logo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            transition: transform 0.3s; /* Smooth scaling on hover */
+        }
+        .logo:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen flex items-center justify-center">
+    <div class="flex min-h-screen w-full">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gradient-to-b from-green-700 to-teal-600 p-6 text-white shadow-lg flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-8">
+                    <a href="dashboard.html">
+                        <img src="./images/oop.png" alt="DVLA Logo" class="logo cursor-pointer">
+                    </a>
+                    <div class="ml-3">
+                        <h2 class="text-2xl font-bold">DVLA</h2>
+                        <p class="text-sm opacity-75">Vehicle Inspection and Registration</p>
+                    </div>
+                </div>
+                <nav>
+                    <a href="records.html" class="flex items-center p-3 mb-2 hover:bg-green-500 rounded-lg transition duration-200">
+                        <span class="material-icons mr-3">search</span>
+                        <span>Search Records</span>
+                    </a>
+                    <a href="changeowner.html" class="flex items-center p-3 mb-2 hover:bg-green-500 rounded-lg transition duration-200">
+                        <span class="material-icons mr-3">sync_alt</span>
+                        <span>Change Ownership</span>
+                    </a>
+                    <a href="admin.html" class="flex items-center p-3 mb-2 hover:bg-green-500 rounded-lg transition duration-200">
+                        <span class="material-icons mr-3">admin_panel_settings</span>
+                        <span>Admin</span>
+                    </a>
+                    <a href="" class="flex items-center p-3 hover:bg-green-500 rounded-lg transition duration-200">
+                        <span class="material-icons mr-3">logout</span>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="mt-auto flex flex-col items-center">
+                <button class="flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-5 py-3 rounded-lg shadow-lg hover:from-green-500 hover:to-teal-500 transform hover:scale-105 transition duration-200 ease-in-out mb-4">
+                    <span class="material-icons mr-2">logout</span>
+                    <span class="font-semibold">Logout</span>
+                </button>
+                <div class="text-center opacity-75 text-sm">
+                    © 2024 DVLA
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <!-- Personalized Greeting -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Good Morning, Alex!</h2>
+                <p class="text-gray-600">Remember to verify documents for new registrations.</p>
+            </div>
+
+            <!-- Dashboard Summary Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="tile bg-white rounded-lg shadow-lg p-4 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold">Total Registered Vehicles</h3>
+                        <p class="text-2xl font-semibold">1,234</p>
+                    </div>
+                    <span class="material-icons text-green-600 text-4xl">directions_car</span>
+                </div>
+                <div class="tile bg-white rounded-lg shadow-lg p-4 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold">Upcoming Inspections</h3>
+                        <p class="text-2xl font-semibold">12</p>
+                    </div>
+                    <span class="material-icons text-yellow-600 text-4xl">schedule</span>
+                </div>
+                <div class="tile bg-white rounded-lg shadow-lg p-4 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold">Pending Approvals</h3>
+                        <p class="text-2xl font-semibold">5</p>
+                    </div>
+                    <span class="material-icons text-red-600 text-4xl">pending</span>
+                </div>
+                <div class="tile bg-white rounded-lg shadow-lg p-4 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold">Recent Activity</h3>
+                        <p class="text-2xl font-semibold">3</p>
+                    </div>
+                    <span class="material-icons text-blue-600 text-4xl">history</span>
+                </div>
+            </div>
+
+            <!-- Quick Access Shortcuts -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Quick Access Shortcuts</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-200">Transfer of Ownership</button>
+
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-200">Pending Reviews</button>
+                </div>
+            </div>
+
+            <!-- Highlighted Announcements or Alerts -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Announcements</h2>
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4">
+                    <p>New regulations for vehicle inspections will take effect on January 1, 2025.</p>
+                </div>
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
+                    <p>Reminder: Ensure all documents are verified before processing registrations.</p>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar mb-6">
+                <div id="progress" class="progress" style="width: 0%;"></div>
+            </div>
+            <div class="text-gray-600 mb-4">
+                <p>Entries Completed Today: <span id="entriesCompleted" class="font-bold">0</span></p>
+            </div>
+
+            <!-- Start New Entry Section -->
+            <div id="startNewEntry" class="hidden bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">New Entry Form</h2>
+                <form id="entryForm">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="entryDetails">Entry Details</label>
+                        <input type="text" id="entryDetails" class="border border-gray-300 rounded-lg p-2 w-full" required>
+                    </div>
+                    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-200">Submit Entry</button>
+                </form>
+            </div>
+
+            <!-- Pending Tasks Section -->
+            <div id="pendingTasks" class="hidden bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Pending Tasks</h2>
+                <ul class="divide-y divide-gray-200">
+                    <li class="flex justify-between items-center p-4 hover:bg-gray-50 transition duration-200">
+                        <span>Vehicle Registration - 2024-10-31</span>
+                        <button class="bg-green-600 text-white px-3 py-1 rounded-lg">Start</button>
+                    </li>
+                    <li class="flex justify-between items-center p-4 hover:bg-gray-50 transition duration-200">
+                        <span>Inspection Record - 2024-10-30</span>
+                        <button class="bg-green-600 text-white px-3 py-1 rounded-lg">Start</button>
+                    </li>
+                    <li class="flex justify-between items-center p-4 hover:bg-gray-50 transition duration-200">
+                        <span>Vehicle Ownership Change - 2024-10-29</span>
+                        <button class="bg-green-600 text-white px-3 py-1 rounded-lg">Start</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Help/Support Section -->
+            <div id="helpSupport" class="hidden bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Help & Support</h2>
+                <p class="text-gray-600">For assistance, please contact support at <a href="mailto:support@dvla.com" class="text-green-600">support@dvla.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for tab navigation and real-time feedback
+        const startNewEntryTab = document.getElementById('startNewEntryTab');
+        const pendingTasksTab = document.getElementById('pendingTasksTab');
+        const helpSupportTab = document.getElementById('helpSupportTab');
+
+        const startNewEntry = document.getElementById('startNewEntry');
+        const pendingTasks = document.getElementById('pendingTasks');
+        const helpSupport = document.getElementById('helpSupport');
+
+        const progress = document.getElementById('progress');
+        const entriesCompleted = document.getElementById('entriesCompleted');
+
+        let completedEntries = 0;
+
+        startNewEntryTab.addEventListener('click', () => {
+            startNewEntry.classList.remove('hidden');
+            pendingTasks.classList.add('hidden');
+            helpSupport.classList.add('hidden');
+            resetProgress();
+        });
+
+        pendingTasksTab.addEventListener('click', () => {
+            pendingTasks.classList.remove('hidden');
+            startNewEntry.classList.add('hidden');
+            helpSupport.classList.add('hidden');
+            resetProgress();
+        });
+
+        helpSupportTab.addEventListener('click', () => {
+            helpSupport.classList.remove('hidden');
+            startNewEntry.classList.add('hidden');
+            pendingTasks.classList.add('hidden');
+            resetProgress();
+        });
+
+        document.getElementById('entryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const entryDetails = document.getElementById('entryDetails').value;
+            if (entryDetails) {
+                completedEntries++;
+                entriesCompleted.textContent = completedEntries;
+                updateProgress();
+                this.reset(); // Reset the form
+            }
+        });
+
+        function updateProgress() {
+            const progressPercentage = (completedEntries / 10) * 100; // Assuming 10 is the target for the day
+            progress.style.width = `${Math.min(progressPercentage, 100)}%`;
+        }
+
+        function resetProgress() {
+            progress.style.width = '0%';
+            entriesCompleted.textContent = '0';
+            completedEntries = 0;
+        }
+    </script>
+</body>
+</html>
