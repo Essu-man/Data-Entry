@@ -247,19 +247,23 @@
 
                 <!-- Buttons -->
                 <div class="flex justify-between mt-6">
-                    <button onclick="navigatePrevious()" class="px-6 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition">Previous</button>
-                    <button onclick="navigateNext()" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">Next</button>
-                    <button onclick="saveFormData()" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">Save</button>
+                    <button id="previousBtn" onclick="navigatePrevious()" class="px-6 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition hidden">Previous</button>
+                    <button id="nextBtn" onclick="navigateNext()" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">Next</button>
+                    <button id="saveBtn" onclick="saveFormData()" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition hidden">Save</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         let currentSection = 0;
         const sections = document.querySelectorAll('.form-section');
         const steps = document.querySelectorAll('.flex.items-center.flex-1 .w-10, #step3 .w-10');
         const successPopup = document.getElementById('successPopup');
+        const previousBtn = document.getElementById('previousBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const saveBtn = document.getElementById('saveBtn');
 
         function showSection(index) {
             sections.forEach((section, i) => {
@@ -269,6 +273,10 @@
                 steps[i].classList.toggle('bg-gray-300', i > index);
                 steps[i].classList.toggle('text-gray-500', i > index);
             });
+
+            previousBtn.classList.toggle('hidden', index === 0);
+            nextBtn.classList.toggle('hidden', index === sections.length - 1);
+            saveBtn.classList.toggle('hidden', index !== sections.length - 1);
         }
 
         function navigateNext() {
@@ -300,7 +308,7 @@
             });
         }
 
-        showSection(currentSection); // Initialize the form
+        showSection(currentSection);
     </script>
 </body>
 </html>
