@@ -51,7 +51,7 @@
                 </nav>
             </div>
             <div class="mt-auto flex flex-col items-center">
-                <button class="flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-5 py-3 rounded-lg shadow-lg hover:from-green-500 hover:to-teal-500 transform hover:scale-105 transition duration-200 ease-in-out mb-4">
+                <button onclick="confirmLogout()" class="flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-5 py-3 rounded-lg shadow-lg hover:from-green-500 hover:to-teal-500 transform hover:scale-105 transition duration-200 ease-in-out mb-4">
                     <span class="material-icons mr-2">logout</span>
                     <span class="font-semibold">Logout</span>
                 </button>
@@ -59,6 +59,19 @@
                     © 2024 DVLA
                 </div>
             </div>
+
+            <script>
+                function confirmLogout() {
+                    const userConfirmed = confirm("Are you sure you want to log out?");
+
+                    if (userConfirmed) {
+                        // Perform logout actions here if needed
+                        window.location.href = "login.html";
+                    }
+                }
+            </script>
+
+
         </div>
 
         <!-- Main Content -->
