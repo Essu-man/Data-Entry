@@ -51,7 +51,7 @@
                 </nav>
             </div>
             <div class="mt-auto flex flex-col items-center">
-                <button onclick="confirmLogout()" class="flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-5 py-3 rounded-lg shadow-lg hover:from-green-500 hover:to-teal-500 transform hover:scale-105 transition duration-200 ease-in-out mb-4">
+                <button onclick="showLogoutPopup()" class="flex items-center bg-gradient-to-r from-green-600 to-teal-600 text-white px-5 py-3 rounded-lg shadow-lg hover:from-green-500 hover:to-teal-500 transform hover:scale-105 transition duration-200 ease-in-out mb-4">
                     <span class="material-icons mr-2">logout</span>
                     <span class="font-semibold">Logout</span>
                 </button>
@@ -60,16 +60,45 @@
                 </div>
             </div>
 
-            <script>
-                function confirmLogout() {
-                    const userConfirmed = confirm("Are you sure you want to log out?");
+            <!-- Logout Confirmation Popup -->
+            <div id="logoutPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg p-6 max-w-xs text-center">
+                    <h2 class="text-xl font-semibold mb-4">Confirm Logout</h2>
+                    <p class="mb-6 text-gray-700">Are you sure you want to log out?</p>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="confirmLogout()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-200">Yes, Logout</button>
+                        <button onclick="closeLogoutPopup()" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-200">Cancel</button>
+                    </div>
+                </div>
+            </div>
 
-                    if (userConfirmed) {
-                        // Perform logout actions here if needed
-                        window.location.href = "login.html";
-                    }
+            <script>
+                function showLogoutPopup() {
+                    document.getElementById('logoutPopup').classList.remove('hidden');
+                }
+
+                function closeLogoutPopup() {
+                    document.getElementById('logoutPopup').classList.add('hidden');
+                }
+
+                function confirmLogout() {
+                    // Perform logout actions here if needed
+                    window.location.href = "login.html";
                 }
             </script>
+
+            <style>
+                /* Style for the popup background and animation */
+                #logoutPopup {
+                    animation: fadeIn 0.3s ease;
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+            </style>
+
 
 
         </div>
