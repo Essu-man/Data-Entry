@@ -68,7 +68,46 @@
 
         <!-- Main Content -->
         <div class="flex-1 p-8">
-            <!-- Header -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center">
+                        <input type="text" id="searchInput" placeholder="Search Records..." class="border border-gray-300 rounded-lg p-2 mr-2 focus:outline-none focus:ring-2 focus:ring-green-500" />
+                        <button onclick="searchRecords()" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-500 transition duration-200">
+                            Search
+                        </button>
+                    </div>
+                    <button onclick="navigateToChangeOwner()" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-500 transition duration-200">
+                        Add Record
+                    </button>
+                </div>
+            </div>
+
+            <script>
+                function searchRecords() {
+                    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+                    // Example record data
+                    const records = [
+                        { name: 'John Doe', contact: '123456789', chassisNumber: 'CH12345' },
+                        { name: 'Jane Smith', contact: '987654321', chassisNumber: 'CH54321' }
+                    ];
+
+                    // Filter records by name, contact, or chassis number
+                    const filteredRecords = records.filter(record =>
+                        record.name.toLowerCase().includes(searchInput) ||
+                        record.contact.includes(searchInput) ||
+                        record.chassisNumber.toLowerCase().includes(searchInput)
+                    );
+
+                    console.log("Search Results:", filteredRecords);
+                    // Display search results as needed, e.g., updating the UI
+                }
+
+                function navigateToChangeOwner() {
+                    window.location.href = "changeowner.html";
+                }
+            </script>
+             <!-- Header -->
             <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
                 <div class="flex justify-between items-center mb-6">
                     <div class="flex items-center">
